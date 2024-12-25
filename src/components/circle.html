@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .circle {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px dashed rgba(120, 119, 119, 0.13);
+            border-radius: 50%;
+        }
+
+        .circle-1 {
+            width: 550px;
+            height: 550px;
+        }
+
+        .circle-2 {
+            width: 350px;
+            height: 350px;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+        }
+
+        .card-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.394);
+            background-color: rgb(255, 255, 255);
+            z-index: 10;
+            transition: transform 0.3s;
+        }
+
+        .card-circle::after{
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .card-circle:hover{
+            transform: scale(1.1);
+        }
+
+        .card-bulb {
+            width: 75px;
+            height: 75px;
+            left: 60px;
+            top: 60%;
+            z-index: 10;
+        }
+
+        .card-bulb::after {
+            content: "Idea";
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+
+
+        .card-projects-xs::after,
+        .card-projects::after {
+            content: "Projects";
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+
+        .card-projects-xs {
+            width: 65px;
+            height: 65px;
+            left: 33%;
+            top: 87%;
+            z-index: 10;
+        }
+
+        .card-person {
+            width: 75px;
+            height: 75px;
+            top: 10%;
+            z-index: 10;
+        }
+
+        .card-person-2 {
+            height: 75px;
+            width: 75px;
+            top: 80%;
+            left: 80%;
+            z-index: 10;
+        }
+
+        .card-person::after,
+        .card-person-2::after {
+            content: "Person";
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+
+        .card-create {
+            height: 75px;
+            width: 75px;
+            top: 0%;
+            left: 10%;
+            z-index: 10;
+        }
+
+        .card-create::after {
+            content: "Create";
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+
+        .card-time {
+            height: 75px;
+            width: 75px;
+            top: 0%;
+            left: 80%;
+            z-index: 10;
+        }
+
+
+        .card-time::after {
+            content: "Time";
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+
+
+        .line {
+            position: absolute;
+            width: 1px;
+            background-color: rgba(120, 119, 119, 0.4);
+        }
+
+        .circle-line-projects-idea {
+            height: 200px;
+            top: 43%;
+            left: 30%; 
+            transform: rotate(60deg);
+        }
+
+        .circle-line-projects-person-2{
+            height: 250px;
+            top: 48%;
+            left: 70%; 
+            transform: rotate(140deg);
+        }
+
+        .circle-line-projects-person{
+            height: 200px;
+            top: 20%;
+            left: 50%; 
+        }
+        
+        .circle-line-person-create{
+            height: 200px;
+            top: -3%;
+            left: 40%; 
+            transform: rotate(110deg);
+        }
+        .circle-line-person-time{
+            height: 200px;
+            top: -7%;
+            left: 70%; 
+            transform: rotate(250deg);
+        }
+
+        .circle-line-idea-projects-2{
+            height: 200px;
+            top: 60%;
+            left: 25%; 
+            transform: rotate(-45deg);
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="container-circle">
+        <div class="circle circle-1">
+
+            <div class="card-circle card-bulb">
+                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3em" viewBox="0 0 256 256">
+                    <path fill="#f59e0b"
+                        d="M176 232a8 8 0 0 1-8 8H88a8 8 0 0 1 0-16h80a8 8 0 0 1 8 8m40-128a87.55 87.55 0 0 1-33.64 69.21A16.24 16.24 0 0 0 176 186v6a16 16 0 0 1-16 16H96a16 16 0 0 1-16-16v-6a16 16 0 0 0-6.23-12.66A87.59 87.59 0 0 1 40 104.49C39.74 56.83 78.26 17.14 125.88 16A88 88 0 0 1 216 104m-16 0a72 72 0 0 0-73.74-72c-39 .92-70.47 33.39-70.26 72.39a71.65 71.65 0 0 0 27.64 56.3A32 32 0 0 1 96 186v6h64v-6a32.15 32.15 0 0 1 12.47-25.35A71.65 71.65 0 0 0 200 104m-16.11-9.34a57.6 57.6 0 0 0-46.56-46.55a8 8 0 0 0-2.66 15.78c16.57 2.79 30.63 16.85 33.44 33.45A8 8 0 0 0 176 104a9 9 0 0 0 1.35-.11a8 8 0 0 0 6.54-9.23" />
+                </svg>
+            </div>
+
+            <div class="card-circle card-projects-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 256 256">
+                    <path fill="#14b8a6"
+                        d="M184 72H40a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V88a16 16 0 0 0-16-16m0 128H40V88h144zm48-144v120a8 8 0 0 1-16 0V56H64a8 8 0 0 1 0-16h152a16 16 0 0 1 16 16" />
+                </svg>
+            </div>
+
+            <div class="card-circle card-person">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                    role="img" width="2rem" height="2rem" viewBox="0 0 256 256">
+                    <path fill="#8b5cf6"
+                        d="M234.38 210a123.36 123.36 0 0 0-60.78-53.23a76 76 0 1 0-91.2 0A123.36 123.36 0 0 0 21.62 210a12 12 0 1 0 20.77 12c18.12-31.32 50.12-50 85.61-50s67.49 18.69 85.61 50a12 12 0 0 0 20.77-12M76 96a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52">
+                    </path>
+                </svg>
+            </div>
+
+            <div class="card-circle card-person-2">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                    role="img" width="2rem" height="2rem" viewBox="0 0 256 256">
+                    <path fill="#8b5cf6"
+                        d="M234.38 210a123.36 123.36 0 0 0-60.78-53.23a76 76 0 1 0-91.2 0A123.36 123.36 0 0 0 21.62 210a12 12 0 1 0 20.77 12c18.12-31.32 50.12-50 85.61-50s67.49 18.69 85.61 50a12 12 0 0 0 20.77-12M76 96a52 52 0 1 1 52 52a52.06 52.06 0 0 1-52-52">
+                    </path>
+                </svg>
+            </div>
+
+            <div class="card-circle card-create">
+                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 24 24">
+                    <path fill="#3b82f6" r
+                        d="m18.356 21.06l-7.102-7.114q-.558.258-1.138.406t-1.231.148q-2.289 0-3.894-1.606Q3.385 11.288 3.385 9q0-.65.144-1.251t.421-1.153l3.535 3.496L9.977 7.6L6.519 4.104q.552-.277 1.134-.44q.582-.164 1.232-.164q2.288 0 3.894 1.606T14.385 9q0 .69-.139 1.27q-.138.58-.415 1.1l7.113 7.101zm0-1.427l1.155-1.156l-6.919-6.92q.393-.538.593-1.2t.2-1.357q0-1.827-1.415-3.276q-1.414-1.449-3.628-1.174l3.05 3.05l-3.907 3.908l-3.05-3.05q-.218 2.425 1.25 3.733q1.469 1.309 3.2 1.309q.669 0 1.329-.19t1.223-.597zM11.8 11.877" />
+                </svg>
+            </div>
+
+            <div class="card-circle card-time">
+                <svg xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="2.5rem" viewBox="0 0 24 24">
+                    <g fill="none">
+                        <path
+                            d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                        <path fill="#f43f5e"
+                            d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12S6.477 2 12 2m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 .993.883L13 7v4.586l2.707 2.707a1 1 0 0 1-1.32 1.497l-.094-.083l-3-3a1 1 0 0 1-.284-.576L11 12V7a1 1 0 0 1 1-1" />
+                    </g>
+                </svg>
+            </div>
+
+            <span class="line circle-line-projects-idea"></span>
+            <span class="line circle-line-projects-person"></span>
+            <span class="line circle-line-projects-person-2"></span>
+            <span class="line circle-line-person-create"></span>
+            <span class="line circle-line-person-time"></span>
+            <span class="line circle-line-idea-projects-2"></span>
+
+
+
+
+
+
+            <div class="circle circle-2">
+
+
+                <div class="circle circle-3">
+
+                    <div class="card-circle card-projects">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 256 256">
+                            <path fill="#14b8a6"
+                                d="M184 72H40a16 16 0 0 0-16 16v112a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V88a16 16 0 0 0-16-16m0 128H40V88h144zm48-144v120a8 8 0 0 1-16 0V56H64a8 8 0 0 1 0-16h152a16 16 0 0 1 16 16" />
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

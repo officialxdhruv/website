@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlazeCode Docs</title>
+    <link rel="stylesheet" href="../css/docs.css">
+    <link rel="stylesheet" href="../../src/components/header/header.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="shortcut icon" href="../../assets/icons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class='bx bxs-flame'></i>
+            <span>BlazeCode Docs</span>
+        </div>
+
+        <div class="content-body">
+
+            <div class="search-box">
+                <input type="search" placeholder="Search" class="search">
+                <i class='bx bx-search'></i>
+            </div>
+
+
+            <div class="menu">
+                <nav>
+                    <ul>
+                        <li><a href="BlazeGuard/src/html/home.html">Home</a></li>
+                        <li><a href="BlazeGuard/src/html/about.html">About</a></li>
+                        <li><a href="BlazeGuard/src/html/services.html">Services</a></li>
+                        <li><a href="BlazeGuard/src/html/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="toggle-button">
+                <button type="button" class="switch" title="toggle dark mode">
+                    <span class="icon">
+                        <i class='bx bx-sun off'></i>
+                        <i class='bx bx-moon on'></i>
+                    </span>
+                </button>
+            </div>
+
+            <div class="social">
+                <ul>
+                    <li><a href="https://www.github.io/" title="github"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.instagram.com/" title="instagram"><i
+                                class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://www.twitter.com/" title="X"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="docs-section">
+        <aside class="docs-aside-left">
+            <h4>Tutorials</h4>
+            <ul>
+                <li>Blink</li>
+            </ul>
+        </aside>
+        <div class="docs-middle-content">
+            <h1>Blink</h1>
+            <p>Turn an LED on off every second.</p>
+            <p>This example shows the simplest thing you can do with an Arduino to see physical output: it blinks the
+                on-board LED.</p>
+            <h2>Hardware Required</h2>
+            <ul>
+                <li>Arduino Board</li>
+                <li>LED</li>
+                <li>220 ohm resistor</li>
+            </ul>
+            <h2>Circuit</h2>
+            <p>This example uses the built-in LED that most Arduino board have. This LED is connected to a digital pin
+                and its number may vary from board type to board type. To make your life easier, we have a constant that
+                is specified in every board descriptor file. This constant is <span>LED_BUILTIN</span> and allows you to
+                control the built-in LED easily.</p>
+            <p>If you want to light an external LED with this sketch, you need to build this circuit, where you connect
+                one end of the resistor to the digital pin corresponded to the <span>LED_BUILTIN</span>contant. Connect
+                the long leg of the LED (the positive leg, called the anode) to the other end of the resistor. Connect
+                the short leg of the LED (the negative leg, called the cathode) to the GND. In the diagram below we show
+                an UNO board that has D13 as the LED_BUILTIN value.</p>
+            <p>The resistor is essential for safe operation as it limits the current flowing throught the LED,
+                perventing damage to both the LED and the Arduino's output pin. You can choose the resistor value based
+                on the desired current using Ohm's Law (V = IR) where V is the voltage of you board (5V or 3.3V) minus
+                the forward voltage for the LED you are using (typical for red would be 1.8 to 2.2 volts). In this case,
+                using a 220-ohm resistor with an ARduino UNO R3 (a 5V board) limits the current to a safe level for the
+                both the LED and the Arduino pin. Adjusting the resistor value allows you to control the LED's
+                brightness while ensuring safe operation. For 5V boards you can expect the LED to be visible to a
+                resistor value of up to 1K Ohm.</p>
+            <img src="../../assets/docs/images/circuit-Recovered.png" alt="circuit">
+            
+            <h2>Schematic</h2>
+            
+            <h2>Code</h2>
+            <p>After you build the circuit plug your Arduino board into your computer, start the Arduino Software (IDE)
+                and enter the code below. You may also load it from the menu File/Examples/01.Basics/Blink . The first
+                thing you do is to initialize LED_BUILTIN pin as an output pin with the line</p>
+            <p><span>pinMode(LED_BUILTIN, OUTPUT);</span></p>
+            <p>In the main loop, you turn the LED on with the line:</p>
+            <p><span>digitalWrite(LED_BUILTIN, HIGH);</span></p>
+            <p>This supplies 5 volts to the LED an turns it on. You then turn the LED off with the line:</p>
+            <p><span>digitalWrite(LED_BUILTIN, LOW);</span></p>
+            <p>That takes the <span>LED_BUILTIN</span> pin back to volts, and turns the LED off. In between the on and
+                the off, you want enough time for a person to see the change, so the
+
+                <span>delay()</span>
+
+                commands tell the board to do nothing for 1000 milliseconds, or one second. When you use the
+
+                <span>delay()</span>
+
+                command, nothing else happens for that amount of time. Once you've understood the basic examples, check
+                out the BlinkWithoutDelay example to learn how to create a delay while doing other things.
+            </p>
+            <pre>
+                <code>
+                    void setup() {
+                        // initialize digital pin LED_BUILTIN as an output.
+                        pinMode(LED_BUILTIN, OUTPUT);
+                      }
+                      
+                      // the loop function runs over and over again forever
+                      void loop() {
+                        digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+                        delay(1000);                      // wait for a second
+                        digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+                        delay(1000);                      // wait for a second
+                      }
+                      
+                </code>
+        </div>
+        <aside class="docs-aside-right">
+
+        </aside>
+    </div>
+    
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
