@@ -42,12 +42,23 @@ h6 {
     overflow-wrap: break-word;
 }
 
+.docs-section ul li{
+    list-style-type: disc;
+}
+
+.docs-section ul {
+    padding-left: 1.25rem;
+}
+
+.docs-middle-content > p{
+    margin-bottom: 1rem;
+}
+
 body {
     font-size: 1rem;
     line-height: 1.5;
     color: #333;
 }
-
 
 .docs-section{
     display: flex;
@@ -61,10 +72,55 @@ body {
 }
 
 .docs-middle-content{
+    outline: 1px solid #e9ecef;
     width: 60%;
-    padding: 0 20px;
+    padding: 0 5rem;
 }
 
 .docs-aside-right{
     width: 20%;
+}
+
+.code-cpp{
+    background-color: #f6f6f7;
+    border-radius: 5px;
+    border: 1px solid #ebe9e1;
+
+}
+
+.code-cpp:hover{
+    border: 1px solid tomato;
+}
+
+
+.break-line{
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #d8d3c4;
+    margin: 3rem 0px;
+}
+
+.next-page-section{
+    display: flex;
+    margin-bottom: 3rem;
+    gap: 3rem;
+    padding: 0 3rem;
+}
+
+.next-page-section > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1rem 2rem;
+    width: 100%;
+    border: 1px solid #d8d3c4;
+    font-size: 0.8rem;
+    border-radius: 10px;
+
+}
+
+.next-page-section > div:hover{
+    border: 1px solid tomato;
+
 }
