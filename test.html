@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Section Highlight</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    ul {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 5px 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      transition: color 0.3s;
+    }
+
+    a.active {
+      color: tomato; /* Highlight color */
+      font-weight: bold;
+    }
+
+    section {
+      height: 100vh;
+      border: 1px solid #ddd;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="#hardwareRequired">Hardware Required</a></li>
+    <li><a href="#circuit">Circuit</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+
+  <section id="hardwareRequired">Hardware Required Section</section>
+  <section id="circuit">Circuit Section</section>
+  <section id="code">Code Section</section>
+
+  <script>
+    // JavaScript to highlight the active link
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      // Determine the currently active section
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 70; // Adjust for any fixed header height
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      // Update the active class on links
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

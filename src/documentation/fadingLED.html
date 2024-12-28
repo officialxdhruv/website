@@ -29,54 +29,56 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <i class='bx bxs-flame'></i>
-            <span>BlazeCode Docs</span>
-        </div>
+    <div class="body-content-container">
 
-        <div class="content-body">
-
-            <div class="search-box">
-                <input type="search" placeholder="Search" class="search">
-                <i class='bx bx-search'></i>
+        <header>
+            <div class="logo">
+                <i class='bx bxs-flame'></i>
+                <span>BlazeCode Docs</span>
             </div>
 
+            <div class="content-body">
 
-            <div class="menu">
-                <nav>
+                <div class="search-box">
+                    <input type="search" placeholder="Search" class="search">
+                    <i class='bx bx-search'></i>
+                </div>
+
+
+                <div class="menu">
+                    <nav>
+                        <ul>
+                            <li><a href="BlazeGuard/src/html/home.html">Home</a></li>
+                            <li><a href="BlazeGuard/src/html/about.html">About</a></li>
+                            <li><a href="BlazeGuard/src/html/services.html">Services</a></li>
+                            <li><a href="BlazeGuard/src/html/contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="toggle-button">
+                    <button type="button" class="switch" title="toggle dark mode">
+                        <span class="icon">
+                            <i class='bx bx-sun off'></i>
+                            <i class='bx bx-moon on'></i>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="social">
                     <ul>
-                        <li><a href="BlazeGuard/src/html/home.html">Home</a></li>
-                        <li><a href="BlazeGuard/src/html/about.html">About</a></li>
-                        <li><a href="BlazeGuard/src/html/services.html">Services</a></li>
-                        <li><a href="BlazeGuard/src/html/contact.html">Contact</a></li>
+                        <li><a href="https://www.github.io/" title="github"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.instagram.com/" title="instagram"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.twitter.com/" title="X"><i class="fa-brands fa-x-twitter"></i></a></li>
                     </ul>
-                </nav>
+                </div>
             </div>
+        </header>
 
-            <div class="toggle-button">
-                <button type="button" class="switch" title="toggle dark mode">
-                    <span class="icon">
-                        <i class='bx bx-sun off'></i>
-                        <i class='bx bx-moon on'></i>
-                    </span>
-                </button>
-            </div>
 
-            <div class="social">
-                <ul>
-                    <li><a href="https://www.github.io/" title="github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.instagram.com/" title="instagram"><i
-                                class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://www.twitter.com/" title="X"><i class="fa-brands fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-    <div class="docs-section">
         <aside class="docs-aside-left">
-            <h4>Tutorials</h4>
+            <p>Tutorials</p>
             <ul>
                 <li>Blink</li>
                 <li>Fading a LED</li>
@@ -86,37 +88,55 @@
 
         <div class="docs-content-section">
             <div class="docs-middle-content">
-                <h1>Fading a LED</h1>
-                <p>Demonstrates the use of analog output to fade an LED.</p>
-                <p>This example demonstrates the use of the <span class="inline-code">analogWrite()</span> fucntion in
-                    fading an LED off and on. AnalogWrite uses pulse width modulation (PWM), turning a digital pin on
-                    and off very quickly with different ratio between on and off, to create a fading effect.</p>
-                <h2>Hardware Required</h2>
-                <ul>
-                    <li>Arduino Board</li>
-                    <li>LED</li>
-                    <li>220 ohm resistor</li>
-                    <li>hook-up wires</li>
-                    <li>breadboard</li>
-                </ul>
-                <h2>Circuit</h2>
-                <p>Connect the anode (the longer, positive leg) of your LED to digital output pin 9 on your board
-                    through a 220 ohm resistor. Connect the cathode (the shorter, negative leg) directly to ground.</p>
-                <img src="../../assets/docs/images/circuit-Recovered.png" alt="fadingLED">
-                <h2>Code</h2>
-                <p>After declaring pin 9 to be your <span class="inline-code">ledPin</span>, there is nothing to do in
-                    the <span class="inline-code">setup()</span> function of your code.</p>
-                <p>The <span class="inline-code">analogWrite()</span> function that you will be using in the main loop
-                    of your code requires two arguments: One telling the function which pin to write to, and one
-                    indicating what <span class="inline-color">PWM</span> value to write.</p>
-                <p>In order to fade your LED off and on, gradually increase your PWM value from 0 (all the way off) to
-                    255 (all the way on), and then back to 0 once again to complete the cycle. In the sketch below, the
-                    PWM value is set using a variable called <span class="inline-var">brightness</span>. Each time
-                    through the loop, it increases by the value of the variable <span
-                        class="inline-var">fadeAmount</span>.</p>
-                <p><span class="inline-code">analogWrite()</span> can change the PWM value very fast, so the delay at
-                    the end of the sketch controls the speed of the fade. Try changing the value of the delay and see
-                    how it changes the fading effect.</p>
+                <section id="fadingLED">
+                    <h1>Fading a LED</h1>
+                    <p>Demonstrates the use of analog output to fade an LED.</p>
+                    <p>This example demonstrates the use of the <span class="inline-code">analogWrite()</span> fucntion
+                        in
+                        fading an LED off and on. AnalogWrite uses pulse width modulation (PWM), turning a digital pin
+                        on
+                        and off very quickly with different ratio between on and off, to create a fading effect.</p>
+                </section>
+                <section id="hardwareRequired">
+                    <h2>Hardware Required</h2>
+                    <ul>
+                        <li>Arduino Board</li>
+                        <li>LED</li>
+                        <li>220 ohm resistor</li>
+                        <li>hook-up wires</li>
+                        <li>breadboard</li>
+                    </ul>
+                </section>
+                <section id="circuit">
+                    <h2>Circuit</h2>
+                    <p>Connect the anode (the longer, positive leg) of your LED to digital output pin 9 on your board
+                        through a 220 ohm resistor. Connect the cathode (the shorter, negative leg) directly to ground.
+                    </p>
+                    <img src="../../assets/docs/images/circuit-Recovered.png" alt="fadingLED">
+                </section>
+                <section id="code">
+
+                    <h2>Code</h2>
+                    <p>After declaring pin 9 to be your <span class="inline-code">ledPin</span>, there is nothing to do
+                        in
+                        the <span class="inline-code">setup()</span> function of your code.</p>
+                    <p>The <span class="inline-code">analogWrite()</span> function that you will be using in the main
+                        loop
+                        of your code requires two arguments: One telling the function which pin to write to, and one
+                        indicating what <span class="inline-color">PWM</span> value to write.</p>
+                    <p>In order to fade your LED off and on, gradually increase your PWM value from 0 (all the way off)
+                        to
+                        255 (all the way on), and then back to 0 once again to complete the cycle. In the sketch below,
+                        the
+                        PWM value is set using a variable called <span class="inline-var">brightness</span>. Each time
+                        through the loop, it increases by the value of the variable <span
+                            class="inline-var">fadeAmount</span>.</p>
+                    <p><span class="inline-code">analogWrite()</span> can change the PWM value very fast, so the delay
+                        at
+                        the end of the sketch controls the speed of the fade. Try changing the value of the delay and
+                        see
+                        how it changes the fading effect.</p>
+                        
                     <pre><code class="code-cpp">
     <span class="code-keyword">int</span> <span class="variable-name">ledPin</span> = <span class="code-number">9</span>; <span class="code-comment">// LED connected to digital pin 9</span>
     <span class="code-keyword">int</span> <span class="variable-name">brightness</span> = <span class="code-number">0</span>; <span class="code-comment">// how bright the LED is</span>
@@ -130,18 +150,19 @@
     <span class="code-keyword">void</span> <span class="function-name">loop</span>() {
         <span class="code-comment">// set the brightness of pin 9:</span>
         <span class="function-call">analogWrite</span>(<span class="variable-name">ledPin</span>, <span class="variable-name">brightness</span>);
-    
+        
         <span class="code-comment">// change the brightness for next time through the loop:</span>
         <span class="variable-name">brightness</span> = <span class="variable-name">brightness</span> + <span class="variable-name">fadeAmount</span>;
-    
+        
         <span class="code-comment">// reverse the direction of the fading at the ends of the fade:</span>
         <span class="code-keyword">if</span> (<span class="variable-name">brightness</span> == <span class="code-number">0</span> || <span class="variable-name">brightness</span> == <span class="code-number">255</span>) {
-        <span class="variable-name">fadeAmount</span> = -<span class="variable-name">fadeAmount</span>;
+            <span class="variable-name">fadeAmount</span> = -<span class="variable-name">fadeAmount</span>;
         }
         <span class="code-comment">// wait for <span class="code-number">30</span> milliseconds to see the dimming effect</span>
         <span class="function-call">delay</span>(<span class="code-number">30</span>);
     }
-                        </code></pre>
+</code></pre>
+                </section>
                 <span class="break-line"></span>
                 <div class="next-page-section">
                     <div></div>
@@ -153,11 +174,13 @@
             </div>
 
             <aside class="docs-aside-right">
-                <p>on this page</p>
+                <a href="#fadingLED">
+                    <p>on this page</p>
+                </a>
                 <ul>
-                    <li>Hardware Required</li>
-                    <li>Circuit</li>
-                    <li>Code</li>
+                    <li><a href="#hardwareRequired">Hardware Required</a></li>
+                    <li><a href="#circuit">Circuit</a></li>
+                    <li><a href="#code">Code</a></li>
                 </ul>
             </aside>
 
@@ -166,7 +189,6 @@
     </div>
 
     <script src="../js/app.js"></script>
-
 </body>
 
 </html>
