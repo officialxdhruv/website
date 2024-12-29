@@ -29,120 +29,213 @@
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <i class='bx bxs-flame'></i>
-            <span>BlazeCode Docs</span>
-        </div>
+    <div class="body-content-container">
 
-        <div class="content-body">
-
-            <div class="search-box">
-                <input type="search" placeholder="Search" class="search">
-                <i class='bx bx-search'></i>
+        <header>
+            <div class="logo">
+                <i class='bx bxs-flame'></i>
+                <span>BlazeCode Docs</span>
             </div>
 
+            <div class="content-body">
 
-            <div class="menu">
-                <nav>
+                <div class="search-box">
+                    <input type="search" placeholder="Search" class="search">
+                    <i class='bx bx-search'></i>
+                </div>
+
+
+                <div class="menu">
+                    <nav>
+                        <ul>
+                            <li><a href="BlazeGuard/src/html/home.html">Home</a></li>
+                            <li><a href="BlazeGuard/src/html/about.html">About</a></li>
+                            <li><a href="BlazeGuard/src/html/services.html">Services</a></li>
+                            <li><a href="BlazeGuard/src/html/contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="toggle-button">
+                    <button type="button" class="switch" title="toggle dark mode">
+                        <span class="icon">
+                            <i class='bx bx-sun off'></i>
+                            <i class='bx bx-moon on'></i>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="social">
                     <ul>
-                        <li><a href="BlazeGuard/src/html/home.html">Home</a></li>
-                        <li><a href="BlazeGuard/src/html/about.html">About</a></li>
-                        <li><a href="BlazeGuard/src/html/services.html">Services</a></li>
-                        <li><a href="BlazeGuard/src/html/contact.html">Contact</a></li>
+                        <li><a href="https://www.github.io/" title="github"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.instagram.com/" title="instagram"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.twitter.com/" title="X"><i class="fa-brands fa-twitter"></i></a></li>
                     </ul>
-                </nav>
+                </div>
             </div>
+        </header>
 
-            <div class="toggle-button">
-                <button type="button" class="switch" title="toggle dark mode">
-                    <span class="icon">
-                        <i class='bx bx-sun off'></i>
-                        <i class='bx bx-moon on'></i>
-                    </span>
-                </button>
-            </div>
-
-            <div class="social">
-                <ul>
-                    <li><a href="https://www.github.io/" title="github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.instagram.com/" title="instagram"><i
-                                class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://www.twitter.com/" title="X"><i class="fa-brands fa-twitter"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-    <div class="docs-section">
         <aside class="docs-aside-left">
-            <h4>Tutorials</h4>
+            <p>Tutorials</p>
             <ul>
                 <li>Blink</li>
                 <li>Fading a LED</li>
                 <li>Read Analog Voltage</li>
             </ul>
         </aside>
-        <div class="docs-middle-content">
-            <h1>Read Analog Voltage</h1>
-            <p>Reads an analog input and prints the voltage to the serial monitor.</p>
-            <p>This example shows you how to read an analog input on analog pin 0, convert the values from analogRead() into voltage, and print it out to the serial monitor of the Arduino Software (IDE).</p>
-            <h2>Hardware Required</h2>
-            <ul>
-                <li>Arduino Board</li>
-                <li>10k ohm potentiometer</li>
-            </ul>
-            <h2>Circuit</h2>
-            <img src="../../assets/images/readAnalogVoltage.png" alt="readAnalogVoltage">
-            <p>Connect the three wires from the potentiometer to your board. The first goes to ground from one of the outer pins of the potentiometer. The second goes to 5 volts from the other outer pin of the potentiometer. The third goes from the middle pin of the potentiometer to analog input 0.</p>
-            <p>By turning the shaft of the potentiometer, you change the amount of resistance on either side of the wiper which is connected to the center pin of the potentiometer. This changes the voltage at the center pin. When the resistance between the center and the side connected to 5 volts is close to zero (and the resistance on the other side is close to 10 kilohms), the voltage at the center pin nears 5 volts. When the resistances are reversed, the voltage at the center pin nears 0 volts, or ground. This voltage is the analog voltage that you're reading as an input.</p>
-            <p>The microcontroller of the board has a circuit inside called an analog-to-digital converter or ADC that reads this changing voltage and converts it to a number between 0 and 1023 (on boards with a 10 bit resolution ADC). When the shaft is turned all the way in one direction, there are 0 volts going to the pin, and the input value is 0. When the shaft is turned all the way in the opposite direction, there are 5 volts going to the pin and the input value is 1023. In between, analogRead() returns a number between 0 and 1023 that is proportional to the amount of voltage being applied to the pin.</p>
-            <h2>Code</h2>
-            <p>In the program below, the very first thing you'll do will be in the setup function, to begin serial communication at 9600 bits of data per second, between your board and your computer with the line:</p>
-            <p><span class="inline-code">Serial.begin(9600);</span></p>
-            <p>Next, in the main loop of your code, you need to establish a variable to store the resistance value (which will be between 0 and 1023, perfect for an int datatype) coming in from your potentiometer:</p>
-            <p><span class="inline-code">int sensorValue = analogRead(A0);</span></p>
-            <p>To change the values from 0-1023 to a range that corresponds to the voltage the pin is reading, you'll need to create another between 0.0 and 5.0, divide 5.0 by 1023.0 and multiply that by <strong>SensorValue</strong> :</p>
-            <p><span class="inline-code">float voltage = sensorValue * (5.0 / 1023.0);</span></p>
-            <p>Finally, you'll want to print this information to your serial monitor. You can do this with the command Serial.println() in your last line of code:</p>
-            <p><span class="inline-code">Serial.println(voltage)</span></p>
-            <p>Now, when you open your Serial Monitor in the Arduino IDE (by clicking on the icon on the right side of the top green bar or pressing Ctrl+Shift+M), you should see a steady stream of numbers ranging from 0.0 - 5.0. As you turn the pot, the values will chanege, corresponding to the voltage coming into pin A0.</p>
 
-            <pre><code class="code-cpp">
-                <span class="code-keyword">void</span> setup() {
-                    <span class="code-comment">// initialize serial communication at <span class="code-number">9600</span> bits per second:</span>
-                    Serial.begin(<span class="code-number">9600</span>);
-                }
+        <div class="docs-content-section">
+            <div class="docs-middle-content">
+                <section id="readAnalog">
+                    <h1>Read Analog Voltage</h1>
+                    <p>Reads an analog input and prints the voltage to the serial monitor.</p>
+                    <p>This example shows you how to read an analog input on analog pin 0, convert the values from
+                        analogRead()
+                        into voltage, and print it out to the serial monitor of the Arduino Software (IDE).</p>
+                </section>
 
-                <span class="code-keyword">void</span> loop() {
-                    <span class="code-comment">// read the input on analog pin 0:</span>
-                    int sensorValue = analogRead(A0);
-                    <span class="code-comment">// Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V) :</span>
-                    float voltage = sensorValue * (5.0 / 1023.0);
-                    <span class="code-comment">// print the value that you read:</span>
-                    Serial.println(sensorValue);
-                }
-            </code></pre>
-            <span class="break-line"></span>
-            <div class="next-page-section">
-                <div></div>
-                <div>
-                    <p>next page</p>
-                    <p>creating new paper</p>
+                <section id="hardwareRequired">
+                    <h2>Hardware Required</h2>
+                    <ul>
+                        <li>Arduino Board</li>
+                        <li>10k ohm potentiometer</li>
+                    </ul>
+                </section>
+
+                <section id="circuit">
+                    <h2>Circuit</h2>
+                    <img src="../../assets/docs/images/circuit-Recovered.png" alt="fadingLED">
+                    <p>Connect the three wires from the potentiometer to your board. The first goes to ground from one
+                        of
+                        the
+                        outer pins of the potentiometer. The second goes to 5 volts from the other outer pin of the
+                        potentiometer. The third goes from the middle pin of the potentiometer to analog input 0.</p>
+                    <p>By turning the shaft of the potentiometer, you change the amount of resistance on either side of
+                        the
+                        wiper which is connected to the center pin of the potentiometer. This changes the voltage at the
+                        center
+                        pin. When the resistance between the center and the side connected to 5 volts is close to zero
+                        (and
+                        the
+                        resistance on the other side is close to 10 kilohms), the voltage at the center pin nears 5
+                        volts.
+                        When
+                        the resistances are reversed, the voltage at the center pin nears 0 volts, or ground. This
+                        voltage
+                        is
+                        the analog voltage that you're reading as an input.</p>
+                    <p>The microcontroller of the board has a circuit inside called an analog-to-digital converter or
+                        ADC
+                        that
+                        reads this changing voltage and converts it to a number between 0 and 1023 (on boards with a 10
+                        bit
+                        resolution ADC). When the shaft is turned all the way in one direction, there are 0 volts going
+                        to
+                        the
+                        pin, and the input value is 0. When the shaft is turned all the way in the opposite direction,
+                        there
+                        are
+                        5 volts going to the pin and the input value is 1023. In between, analogRead() returns a number
+                        between
+                        0 and 1023 that is proportional to the amount of voltage being applied to the pin.</p>
+                </section>
+
+                <section id="code">
+                    <h2>Code</h2>
+                    <p>In the program below, the very first thing you'll do will be in the setup function, to begin
+                        serial
+                        communication at 9600 bits of data per second, between your board and your computer with the
+                        line:
+                    </p>
+                    <p><span class="inline-code">Serial.begin(9600);</span></p>
+                    <p>Next, in the main loop of your code, you need to establish a variable to store the resistance
+                        value
+                        (which will be between 0 and 1023, perfect for an int datatype) coming in from your
+                        potentiometer:
+                    </p>
+                    <p><span class="inline-code">int sensorValue = analogRead(A0);</span></p>
+                    <p>To change the values from 0-1023 to a range that corresponds to the voltage the pin is reading,
+                        you'll
+                        need to create another between 0.0 and 5.0, divide 5.0 by 1023.0 and multiply that by
+                        <strong>SensorValue</strong> :
+                    </p>
+                    <p><span class="inline-code">float voltage = sensorValue * (5.0 / 1023.0);</span></p>
+                    <p>Finally, you'll want to print this information to your serial monitor. You can do this with the
+                        command
+                        Serial.println() in your last line of code:</p>
+                    <p><span class="inline-code">Serial.println(voltage)</span></p>
+                    <p>Now, when you open your Serial Monitor in the Arduino IDE (by clicking on the icon on the right
+                        side
+                        of
+                        the top green bar or pressing Ctrl+Shift+M), you should see a steady stream of numbers ranging
+                        from
+                        0.0
+                        - 5.0. As you turn the pot, the values will chanege, corresponding to the voltage coming into
+                        pin
+                        A0.
+                    </p>
+
+                    <pre><code class="code-cpp">
+    <span class="code-keyword">int</span> <span class="variable-name">sensorPin</span> = <span class="code-number">A0</span>; <span class="code-comment">// Analog input pin connected to the sensor</span>
+    <span class="code-keyword">float</span> <span class="variable-name">voltage</span> = <span class="code-number">0.0</span>; <span class="code-comment">// Variable to store calculated voltage</span>
+    
+    <span class="code-keyword">void</span> <span class="function-name">setup</span>() {
+        <span class="code-comment">// initialize serial communication at <span class="code-number">9600</span> bits per second:</span>
+        <span class="function-call">Serial.begin</span>(<span class="code-number">9600</span>);
+    }
+    
+    <span class="code-keyword">void</span> <span class="function-name">loop</span>() {
+        <span class="code-comment">// read the input on analog pin 0:</span>
+        <span class="code-keyword">int</span> <span class="variable-name">sensorValue</span> = <span class="function-call">analogRead</span>(<span class="variable-name">sensorPin</span>);
+        
+        <span class="code-comment">// Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):</span>
+        <span class="variable-name">voltage</span> = <span class="variable-name">sensorValue</span> * (<span class="code-number">5.0</span> / <span class="code-number">1023.0</span>);
+        
+        <span class="code-comment">// print the value that you read:</span>
+        <span class="function-call">Serial.println</span>(<span class="variable-name">sensorValue</span>);
+        
+        <span class="code-comment">// wait for <span class="code-number">10</span> milliseconds to avoid spamming the serial monitor</span>
+        <span class="function-call">delay</span>(<span class="code-number">10</span>);
+    }
+                </code></pre>
+                </section>
+
+                <span class="break-line"></span>
+
+                <div class="next-page-section">
+                    <a href="fadingLED.html">
+                        <div class="previous-page-div">
+                            <p>previous page</p>
+                            <p>Fading a LED</p>
+                        </div>
+                    </a>
+
+                    <a href="#" title="Next Page">
+                        <div class="next-page-div">
+                        </div>
+                    </a>
+
                 </div>
+
             </div>
+
+            <aside class="docs-aside-right">
+                <a href="#readAnalog">
+                    <p>on this page</p>
+                </a>
+                <ul>
+                    <li><a href="#hardwareRequired">Hardware Required</a></li>
+                    <li><a href="#circuit">Circuit</a></li>
+                    <li><a href="#code">Code</a></li>
+                </ul>
+            </aside>
+
         </div>
-
-        <aside class="docs-aside-right">
-        </aside>
-
     </div>
 
     <script src="../js/app.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-
-    <script>hljs.highlightAll();</script>
 </body>
 
 </html>
