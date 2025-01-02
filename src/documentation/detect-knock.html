@@ -82,28 +82,66 @@
                 <li>Blink</li>
                 <li>Fading a LED</li>
                 <li>Read Analog Voltage</li>
+                <li>Detect a Knock</li>
             </ul>
         </aside>
 
         <div class="docs-content-section">
             <div class="docs-middle-content">
-                <section id="#">
+                <section id="detect-knock">
+                    <h1>Detect a Knock</h1>
+                    <p>This tutorial shows you how to use a <strong>Piezo element</strong> to detect vibration.</p>
+                    <p>A piezo is an electronic device that generates a voltage when it's physically deformed by vibration, sound wave, or mechanical strain. Similarly, when you put a voltage across a piezo, it vibrates an create a tone. Piezos can be used both to play tones and to detect tones.</p>
+                    <p>The sketch readds the piezo output using the <span class="inline-code">analogRead()</span> command, encoding the voltage range from 0 to 5 volts toa numerical range from 0 to 1023 in a process referred to as analog-to-digital conversion, or ADC.</p>
+                    <p>If the sensors output is stronger than a certain threshold, your board will send the string "Knock!" to the computer over serial port.</p>
+                    <p>Open the serial monitor the see this text.</p>
                 </section>
 
                 <section id="hardware-required">
                     <h2>Hardware Required</h2>
-
+                    <ul>
+                        <li>Arduino Board</li>
+                        <li>Piezo electric disc</li>
+                        <li>1 Megohm resistor</li>
+                        <li>solid surface</li>
+                    </ul>
                 </section>
 
                 <section id="circuit">
                     <h2>Circuit</h2>
+                    <p>Piezos are <strong>polarized</strong>, meaning that voltage passes through them (or out of them) in a specific direction. Connect the black wire (the lower voltage) to ground and the red wire (the higher voltage) to analog pin 0. Additionally, connect a 1-megohm resistor in parallel to the Piezo element to limit the voltage and current produced by the piezo and to protect the analog input.</p>
+                    <p>It is possible to acquire piezo elements without a plastic housing. These will look like a metallic disc, and are easier to use an input sensors. Piezo sensors work best when firmly pressed against, taped, or glued their sensing surface.</p>
 
                 </section>
 
                 <section id="code">
                     <h2>Code</h2>
-
+                    <p>In the code below, the incoming piezo data is compared to a threshold value set by the user. Try rasing or lowering this value to increase your sensor's overall sensitivity.</p>
                     <pre><code class="code-cpp">
+    <span class="code-keyword">int</span> <span class="variable-name">sensorReading</span> = <span class="code-number">0</span>; <span class="code-comment">// variable to store the value read from the sensor pin</span>
+    <span class="code-keyword">int</span> <span class="variable-name">ledState</span> = <span class="code-keyword">LOW</span>; <span class="code-comment">// variable used to store the last LED status, to toggle the light</span>
+
+    <span class="code-keyword">void</span> <span class="function-name">setup</span>() {
+    <span class="function-call">pinMode</span>(<span class="variable-name">ledPin</span>, <span class="code-keyword">OUTPUT</span>); <span class="code-comment">// declare the ledPin as OUTPUT</span>
+    <span class="function-call">Serial.begin</span>(<span class="code-number">9600</span>); <span class="code-comment">// use the serial port</span>
+    }
+
+    <span class="code-keyword">void</span> <span class="function-name">loop</span>() {
+    <span class="code-comment">// read the sensor and store it in the variable sensorReading:</span>
+    <span class="variable-name">sensorReading</span> = <span class="function-call">analogRead</span>(<span class="variable-name">knockSensor</span>);
+
+    <span class="code-comment">// if the sensor reading is greater than the threshold:</span>
+    <span class="code-keyword">if</span> (<span class="variable-name">sensorReading</span> >= <span class="variable-name">threshold</span>) {
+        <span class="code-comment">// toggle the status of the ledPin:</span>
+        <span class="variable-name">ledState</span> = <span class="code-keyword">!</span><span class="variable-name">ledState</span>;
+        <span class="code-comment">// update the LED pin itself:</span>
+        <span class="function-call">digitalWrite</span>(<span class="variable-name">ledPin</span>, <span class="variable-name">ledState</span>);
+        <span class="code-comment">// send the string "Knock!" back to the computer, followed by newline</span>
+        <span class="function-call">Serial.println</span>(<span class="string">"Knock!"</span>);
+    }
+    <span class="code-comment">// delay to avoid overloading the serial port buffer</span>
+    <span class="function-call">delay</span>(<span class="code-number">100</span>);
+    }
                     </code></pre>
 
                 </section>
@@ -113,6 +151,8 @@
                 <div class="next-page-section">
                     <a href="fadingLED.html" title="Previous Page">
                         <div class="previous-page-div">
+                            <p>previous page</p>
+                            <p>Read Analog Voltage</p>
                         </div>
                     </a>
 

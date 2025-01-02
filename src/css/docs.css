@@ -91,16 +91,6 @@ ul {
 }
 
 /*----------------*\
-#docs-section
-\*----------------*/
-
-.docs-section {
-    display: flex;
-    height: 100%;
-    width: 100%;
-}
-
-/*----------------*\
 #docs-aside-left
 \*----------------*/
 
@@ -176,7 +166,7 @@ ul {
     padding: 0 1rem;
 }
 
-.docs-middle-content p {
+.docs-middle-content section p {
     margin-bottom: 1rem;
 }
 
@@ -296,7 +286,7 @@ h2 {
     width: 100%;
     border: 1px solid #d8d3c4;
     font-size: 0.8rem;
-    line-height: 1.2rem;
+    line-height: 1.5rem;
     border-radius: 10px;
     visibility: hidden;
 }
@@ -390,7 +380,8 @@ pre code {
     background-color: white;
     border-radius: 10px;
     border: 1px solid #ebe9e1;
-    overflow: auto;
+    overflow-x: auto;
+
 }
 
 .code-cpp.dark-mode {
@@ -399,4 +390,8 @@ pre code {
 
 .code-cpp:hover {
     border: 1px solid tomato;
+}
+
+.code-cpp::-webkit-scrollbar{
+    display: none;
 }
